@@ -8,7 +8,6 @@ import urllib.request
 import argparse
 import os.path
 
-
 def fetch_one_fasta(uniprot_id):
     """
     Fetch the fasta formatted sequence of the uniProtID supplied in the argument.
@@ -61,15 +60,16 @@ def fetch_all_sequences(query_folder, uniprot_filename, database_filename):
         ### START CODING HERE ####
         ##########################
         # Fetch the fasta formatted sequence for each uniProtID.
-        fetch_one_fasta(uniprot_id)
+        protein_fasta = fetch_one_fasta(uniprot_id)
 
         # Store the fasta sequences as individual fasta file in your query directory.
-
+        with open(os.path.join('query', protein_fasta, 'w')) as f:
+            f.write(protein_fasta)
+            f.close()
 
         # Store all the fasta sequences in one single fasta file as well. These individual files will be used
-
-
         # as (PSI-)BLAST queries later on.
+        database_file.write(protein_fasta)
 
         ##########################
         ###  END CODING HERE  ####
