@@ -19,7 +19,7 @@ def fetch_one_fasta(uniprot_id):
     ##########################
     # Define the variable 'url' as a string with the URL to the Fasta formatted sequence of the uniProtID
     # in the uniprot website (www.uniprot.org).
-    url = "https://uniprot.org/uniprot/" + uniprot_id + ".fasta"
+    url = "https://uniprot.org/uniprot/" + str(uniprot_id) + ".fasta"
     ##########################
     ###  END CODING HERE  ####
     ##########################
@@ -63,13 +63,13 @@ def fetch_all_sequences(query_folder, uniprot_filename, database_filename):
         protein_fasta = fetch_one_fasta(uniprot_id)
 
         # Store the fasta sequences as individual fasta file in your query directory.
-        with open(os.path.join('query', protein_fasta, 'w')) as f:
+        with open("Output.txt" + str(uniprot_id), "w") as f:
             f.write(protein_fasta)
-            f.close()
 
         # Store all the fasta sequences in one single fasta file as well. These individual files will be used
         # as (PSI-)BLAST queries later on.
         database_file.write(protein_fasta)
+        database_file.write("\n")
 
         ##########################
         ###  END CODING HERE  ####
