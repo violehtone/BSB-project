@@ -63,7 +63,7 @@ def fetch_all_sequences(query_folder, uniprot_filename, database_filename):
         protein_fasta = fetch_one_fasta(uniprot_id)
 
         # Store the fasta sequences as individual fasta file in your query directory.
-        with open("Output.txt" + str(uniprot_id), "w") as f:
+        with open(str(uniprot_id) + ".fasta", "w") as f:
             f.write(protein_fasta)
 
         # Store all the fasta sequences in one single fasta file as well. These individual files will be used
